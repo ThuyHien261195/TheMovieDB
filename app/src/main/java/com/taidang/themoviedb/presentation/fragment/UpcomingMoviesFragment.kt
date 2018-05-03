@@ -19,9 +19,6 @@ class UpcomingMoviesFragment : MoviesListingBaseFragment<UpcomingMoviesContract.
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        tmdbApp.appComponent
-                .plus(MoviesListingModule())
-                .inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

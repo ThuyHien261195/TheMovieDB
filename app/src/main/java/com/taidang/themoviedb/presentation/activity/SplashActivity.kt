@@ -22,10 +22,6 @@ class SplashActivity : BaseActivity(), SplashContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        tmdbApp.appComponent
-                .plus(SplashModule())
-                .inject(this)
-
         with(mPresenter) {
             attachView(this@SplashActivity)
             start()

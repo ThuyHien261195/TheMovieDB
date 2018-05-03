@@ -3,8 +3,10 @@ package com.taidang.themoviedb.presentation.presenter
 import com.taidang.themoviedb.domain.usecase.GetMovieDetailsUsecase
 import com.taidang.themoviedb.presentation.contract.MovieDetailsContract
 import io.reactivex.disposables.CompositeDisposable
+import javax.inject.Inject
 
-class MovieDetailsPresenter(private val getMovieDetailsUsecase: GetMovieDetailsUsecase, private val movieId: Int)
+class MovieDetailsPresenter
+@Inject constructor(private val getMovieDetailsUsecase: GetMovieDetailsUsecase, private val movieId: Int)
     : MovieDetailsContract.Presenter {
 
     override var mView: MovieDetailsContract.View? = null

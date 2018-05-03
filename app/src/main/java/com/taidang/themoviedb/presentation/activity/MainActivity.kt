@@ -5,10 +5,11 @@ import android.support.v7.app.AppCompatActivity
 import com.taidang.themoviedb.R
 import com.taidang.themoviedb.presentation.adapter.MainContentPagerAdapter
 import com.taidang.themoviedb.presentation.adapter.ZoomOutPageTransformer
+import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.support.v4.onPageChangeListener
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,25 +1,18 @@
 package com.taidang.themoviedb.presentation.di.module
 
-import com.taidang.themoviedb.domain.usecase.GetMoviesUsecase
-import com.taidang.themoviedb.presentation.contract.NowPlayingMoviesContract
-import com.taidang.themoviedb.presentation.contract.UpcomingMoviesContract
-import com.taidang.themoviedb.presentation.manager.AppConfigManager
-import com.taidang.themoviedb.presentation.presenter.NowPlayingMoviesPresenter
-import com.taidang.themoviedb.presentation.presenter.UpcomingMoviesPresenter
+import com.taidang.themoviedb.presentation.di.FragmentScoped
+import com.taidang.themoviedb.presentation.fragment.NowPlayingMoviesFragment
+import com.taidang.themoviedb.presentation.fragment.UpcomingMoviesFragment
 import dagger.Module
-import dagger.Provides
+import dagger.android.ContributesAndroidInjector
 
 @Module
-class MoviesListingModule {
+abstract class MoviesListingModule {
+    @FragmentScoped
+    @ContributesAndroidInjector(modules = [NowPlayingMoviesModule::class])
+    abstract fun bindsNowPlayingMoviesFragment() : NowPlayingMoviesFragment
 
-    @Provides
-    fun providesNowPlayingMoviesPresenter(getMoviesUsecase: GetMoviesUsecase, appConfigManager: AppConfigManager): NowPlayingMoviesContract.Presenter {
-        return NowPlayingMoviesPresenter(getMoviesUsecase, appConfigManager)
-    }
-
-    @Provides
-    fun providesUpcomingMoviesPresenter(getMoviesUsecase: GetMoviesUsecase, appConfigManager: AppConfigManager): UpcomingMoviesContract.Presenter {
-        return UpcomingMoviesPresenter(getMoviesUsecase, appConfigManager)
-    }
-
+    @FragmentScoped
+    @ContributesAndroidInjector(modules = [UpcomingMoviesModule::class])
+    abstract fun bindsUpcomingMoviesFragment() : UpcomingMoviesFragment
 }

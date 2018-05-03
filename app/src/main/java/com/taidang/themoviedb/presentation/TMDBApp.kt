@@ -1,21 +1,18 @@
 package com.taidang.themoviedb.presentation
 
-import android.app.Application
 import com.taidang.themoviedb.presentation.di.component.ApplicationComponent
 import com.taidang.themoviedb.presentation.di.component.DaggerApplicationComponent
-import com.taidang.themoviedb.presentation.di.module.ApplicationModule
+import dagger.android.AndroidInjector
+import dagger.android.support.DaggerApplication
 
-class TMDBApp : Application() {
+class TMDBApp : DaggerApplication() {
 
-    val appComponent: ApplicationComponent by lazy {
-        DaggerApplicationComponent
-                .builder()
-                .applicationModule(ApplicationModule(this))
+    private lateinit var appComponent: ApplicationComponent
+
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+        appComponent = DaggerApplicationComponent.builder()
+                .bindsApplication(this)
                 .build()
-    }
-
-    override fun onCreate() {
-        super.onCreate()
-        appComponent.inject(this)
+        return appComponent
     }
 }

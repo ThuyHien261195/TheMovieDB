@@ -35,6 +35,7 @@ class MovieDetailsActivity : BaseActivity(), MovieDetailsContract.View {
 
     @Inject
     override lateinit var mPresenter: MovieDetailsContract.Presenter
+
     @Inject
     lateinit var imagesConfig: ImagesConfig
 
@@ -42,10 +43,6 @@ class MovieDetailsActivity : BaseActivity(), MovieDetailsContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_details)
 
-        val id = intent.getIntExtra(EXTRA_MOVIE_ID, -1)
-        tmdbApp.appComponent
-                .plus(MovieDetailsModule(id))
-                .inject(this)
 
         with(mPresenter) {
             attachView(this@MovieDetailsActivity)
@@ -124,4 +121,6 @@ class MovieDetailsActivity : BaseActivity(), MovieDetailsContract.View {
             vInfoKeyword.text = keywords.joinToString()
         }
     }
+
+    fun getMovieId() = intent.getIntExtra(EXTRA_MOVIE_ID, -1)
 }

@@ -16,11 +16,12 @@ import com.taidang.themoviedb.presentation.activity.MovieDetailsActivity
 import com.taidang.themoviedb.presentation.adapter.GridItemDecoration
 import com.taidang.themoviedb.presentation.adapter.MoviesListingAdapter
 import com.taidang.themoviedb.presentation.contract.base.IBaseView
+import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_movies_listing.*
 import org.jetbrains.anko.support.v4.dip
 import org.jetbrains.anko.support.v4.startActivity
 
-abstract class MoviesListingBaseFragment<PRESENTER> : Fragment(), IBaseView<PRESENTER> {
+abstract class MoviesListingBaseFragment<PRESENTER> : DaggerFragment(), IBaseView<PRESENTER> {
 
     companion object {
         private const val SPAN_COUNT = 2
