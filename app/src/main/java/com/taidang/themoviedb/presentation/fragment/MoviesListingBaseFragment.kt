@@ -1,7 +1,6 @@
 package com.taidang.themoviedb.presentation.fragment
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -13,7 +12,7 @@ import com.taidang.themoviedb.domain.model.Movie
 import com.taidang.themoviedb.extension.gone
 import com.taidang.themoviedb.extension.visible
 import com.taidang.themoviedb.presentation.activity.MovieDetailsActivity
-import com.taidang.themoviedb.presentation.adapter.GridItemDecoration
+import com.taidang.themoviedb.presentation.adapter.decoration.GridItemDecoration
 import com.taidang.themoviedb.presentation.adapter.MoviesListingAdapter
 import com.taidang.themoviedb.presentation.contract.base.IBaseView
 import dagger.android.support.DaggerFragment

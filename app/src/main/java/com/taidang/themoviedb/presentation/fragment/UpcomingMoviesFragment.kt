@@ -3,9 +3,7 @@ package com.taidang.themoviedb.presentation.fragment
 import android.os.Bundle
 import android.view.View
 import com.taidang.themoviedb.domain.model.Movie
-import com.taidang.themoviedb.extension.tmdbApp
 import com.taidang.themoviedb.presentation.contract.UpcomingMoviesContract
-import com.taidang.themoviedb.presentation.di.module.MoviesListingModule
 import com.taidang.themoviedb.presentation.manager.AppConfigManager
 import javax.inject.Inject
 
