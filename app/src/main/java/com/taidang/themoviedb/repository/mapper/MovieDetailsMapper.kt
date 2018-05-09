@@ -1,8 +1,11 @@
 package com.taidang.themoviedb.repository.mapper
 
 import com.google.gson.JsonElement
-import com.taidang.themoviedb.domain.model.Company
 import com.taidang.themoviedb.domain.model.MovieDetails
+import com.taidang.themoviedb.repository.mapper.MediaMapper.Companion.parseCompanies
+import com.taidang.themoviedb.repository.mapper.MediaMapper.Companion.parseCountries
+import com.taidang.themoviedb.repository.mapper.MediaMapper.Companion.parseGenres
+import com.taidang.themoviedb.repository.mapper.MediaMapper.Companion.parseKeywords
 import com.taidang.themoviedb.repository.response.MovieEntity
 
 class MovieDetailsMapper(private val castMapper: CastMapper, private val clipMapper: ClipMapper) : IMapper<MovieEntity, MovieDetails> {
@@ -29,52 +32,7 @@ class MovieDetailsMapper(private val castMapper: CastMapper, private val clipMap
                 contentRating)
     }
 
-    private fun parseGenres(element: JsonElement): List<String> {
-        return if (!element.isJsonArray) emptyList()
-        else {
-            element.asJsonArray
-                    .filter { it.isJsonObject }
-                    .map { it.asJsonObject }
-                    .filter { !it.get("name").isJsonNull }
-                    .map { it.get("name").asString }
-        }
-    }
-
-    private fun parseCompanies(element: JsonElement): List<Company> {
-        return if (!element.isJsonArray) emptyList()
-        else {
-            element.asJsonArray
-                    .filter { it.isJsonObject }
-                    .map { it.asJsonObject }
-                    .filter { !it.get("logo_path").isJsonNull }
-                    .map {
-                        Company(it.get("id").asInt, it.get("name").asString, it.get("logo_path").asString)
-                    }
-        }
-    }
-
-    private fun parseCountries(element: JsonElement): List<String> {
-        return if (!element.isJsonArray) emptyList()
-        else {
-            element.asJsonArray
-                    .filter { it.isJsonObject }
-                    .map { it.asJsonObject }
-                    .filter { !it.get("name").isJsonNull }
-                    .map { it.get("name").asString }
-        }
-    }
-
-    private fun parseKeywords(element: JsonElement): List<String> {
-        return if (!element.isJsonObject) emptyList()
-        else {
-            element.asJsonObject.get("keywords").asJsonArray
-                    .map { it.asJsonObject }
-                    .filter { !it.get("name").isJsonNull }
-                    .map { it.get("name").asString }
-        }
-    }
-
-    private fun parseCertification(element: JsonElement, country: String = "US"): String? {
+    public fun parseCertification(element: JsonElement, country: String = "US"): String? {
         return if (!element.isJsonObject) ""
         else {
             element.asJsonObject.get("results").asJsonArray
