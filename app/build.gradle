@@ -26,6 +26,10 @@ android {
     }
 }
 
+androidExtensions {
+    experimental = true
+}
+
 def getApiKey() {
     Properties props = new Properties()
     props.load(project.rootProject.file('local.properties').newDataInputStream())
