@@ -11,4 +11,9 @@
     <string name="label_prod_country">Production Country</string>
     <string name="label_prod_company">Production Company</string>
     <string name="label_keywords">Keyword</string>
+
+    <string name="tab_name_movie">Movie</string>
+    <string name="tab_name_tv_show">Tv Show</string>
+    <string name="tab_name_popular_tv_show">Popular</string>
+    <string name="tab_name_top_rated_tv_show">Top Rated</string>
 </resources>
