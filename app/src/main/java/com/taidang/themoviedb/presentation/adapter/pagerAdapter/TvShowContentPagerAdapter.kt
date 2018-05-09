@@ -1,4 +1,4 @@
-package com.taidang.themoviedb.presentation.adapter
+package com.taidang.themoviedb.presentation.adapter.pagerAdapter
 
 import android.content.Context
 import android.support.v4.app.Fragment
@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentPagerAdapter
 import com.taidang.themoviedb.R
 import com.taidang.themoviedb.presentation.fragment.PopularTvShowsFragment
 import com.taidang.themoviedb.presentation.fragment.TopRatedTvShowsFragment
-import com.taidang.themoviedb.presentation.presenter.PopularTvShowPresenter
 
 /**
  * Created by thuyhien on 5/7/18.
