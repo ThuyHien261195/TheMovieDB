@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,15 +7,21 @@
     android:orientation="vertical"
     tools:context=".presentation.activity.MainActivity">
 
-    <android.support.v7.widget.Toolbar
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/vToolbar"
-        style="@style/Toolbar"/>
+        style="@style/Toolbar" />
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vMainPager"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
 
+        <FrameLayout
+            android:id="@+id/frameLayoutMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <include
+            layout="@layout/include_tab_media" />
+    </FrameLayout>
 </LinearLayout>
