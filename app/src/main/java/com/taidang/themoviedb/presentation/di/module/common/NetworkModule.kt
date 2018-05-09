@@ -7,6 +7,7 @@ import com.taidang.themoviedb.presentation.di.ApplicationScoped
 import com.taidang.themoviedb.presentation.di.DependencyName
 import com.taidang.themoviedb.repository.http.ConfigurationHttpClient
 import com.taidang.themoviedb.repository.http.MovieHttpClient
+import com.taidang.themoviedb.repository.http.TvShowHttpClient
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
@@ -85,6 +86,13 @@ abstract class NetworkModule {
         @ApplicationScoped
         fun providesMovieHttpClient(retrofit: Retrofit): MovieHttpClient {
             return retrofit.create(MovieHttpClient::class.java)
+        }
+
+        @Provides
+        @JvmStatic
+        @ApplicationScoped
+        fun providesTvShowHttpClient(retrofit: Retrofit): TvShowHttpClient {
+            return retrofit.create(TvShowHttpClient::class.java)
         }
     }
 }

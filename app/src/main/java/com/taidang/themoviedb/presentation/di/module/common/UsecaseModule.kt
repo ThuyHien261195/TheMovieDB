@@ -3,9 +3,8 @@ package com.taidang.themoviedb.presentation.di.module.common
 import com.taidang.themoviedb.domain.ConfigurationRepository
 import com.taidang.themoviedb.domain.MovieRepository
 import com.taidang.themoviedb.domain.SchedulerFactory
-import com.taidang.themoviedb.domain.usecase.GetConfigUsecase
-import com.taidang.themoviedb.domain.usecase.GetMovieDetailsUsecase
-import com.taidang.themoviedb.domain.usecase.GetMoviesUsecase
+import com.taidang.themoviedb.domain.TvShowRepository
+import com.taidang.themoviedb.domain.usecase.*
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -31,6 +30,18 @@ abstract class UsecaseModule {
         @JvmStatic
         fun providesGetMovieDetailsUsecase(schedulerFactory: SchedulerFactory, movieRepository: MovieRepository): GetMovieDetailsUsecase {
             return GetMovieDetailsUsecase(schedulerFactory, movieRepository)
+        }
+
+        @Provides
+        @JvmStatic
+        fun provideGetTvShowsUsecase(schedulerFactory: SchedulerFactory, tvShowRepository: TvShowRepository) : GetTvShowsUsecase {
+            return GetTvShowsUsecase(schedulerFactory, tvShowRepository)
+        }
+
+        @Provides
+        @JvmStatic
+        fun provideGetTvShowDetailsUsecase(schedulerFactory: SchedulerFactory, tvShowRepository: TvShowRepository) : GetTvShowDetailsUsecase {
+            return GetTvShowDetailsUsecase(schedulerFactory, tvShowRepository)
         }
     }
 }

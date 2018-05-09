@@ -4,14 +4,9 @@ import com.taidang.themoviedb.presentation.activity.MainActivity
 import com.taidang.themoviedb.presentation.activity.MovieDetailsActivity
 import com.taidang.themoviedb.presentation.activity.SplashActivity
 import com.taidang.themoviedb.presentation.di.ActivityScoped
-import com.taidang.themoviedb.presentation.di.DependencyName
-import com.taidang.themoviedb.presentation.di.module.MovieDetailsModule
-import com.taidang.themoviedb.presentation.di.module.MovieIdModule
-import com.taidang.themoviedb.presentation.di.module.MoviesListingModule
-import com.taidang.themoviedb.presentation.di.module.SplashModule
+import com.taidang.themoviedb.presentation.di.module.*
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import javax.inject.Named
 
 /**
  * Created by thuyhien on 4/27/18.
@@ -23,7 +18,7 @@ abstract class ActivityBuilderModule {
     abstract fun bindsSplashActivity(): SplashActivity
 
     @ActivityScoped
-    @ContributesAndroidInjector(modules = [MoviesListingModule::class])
+    @ContributesAndroidInjector(modules = [MainModule::class, MovieListingModule::class, TvShowListingModule::class])
     abstract fun bindsMainActivity(): MainActivity
 
     @ActivityScoped

@@ -41,5 +41,17 @@ abstract class MapperModule {
         @Provides
         @JvmStatic
         fun providesMoviesInfoMapper(movieMapper: MovieMapper) = MoviesInfoMapper(movieMapper)
+
+        @Provides
+        @JvmStatic
+        fun providesTvShowDetailsMapper(castMapper: CastMapper, clipMapper: ClipMapper) = TvShowDetailsMapper(castMapper, clipMapper)
+
+        @Provides
+        @JvmStatic
+        fun providesTvShowMapper(detailsMapper: TvShowDetailsMapper) = TvShowMapper(detailsMapper)
+
+        @Provides
+        @JvmStatic
+        fun providesTvShowInfoMapper(tvShowMapper: TvShowMapper) = TvShowsInfoMapper(tvShowMapper)
     }
 }
