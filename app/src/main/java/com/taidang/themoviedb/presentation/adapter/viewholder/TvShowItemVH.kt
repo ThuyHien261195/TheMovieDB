@@ -5,18 +5,21 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.taidang.themoviedb.domain.model.ImageSize
 import com.taidang.themoviedb.domain.model.ImagesConfig
-import com.taidang.themoviedb.domain.model.Movie
+import com.taidang.themoviedb.domain.model.TvShow
 import kotlinx.android.synthetic.main.item_now_playing_movie_port.*
 
-class MovieItemVH(itemView: View) : BaseViewHolder<Movie>(itemView) {
-    override fun bind(data: Movie) {
+/**
+ * Created by thuyhien on 5/8/18.
+ */
+class TvShowItemVH(itemView: View) : BaseViewHolder<TvShow>(itemView) {
+    override fun bind(data: TvShow) {
         tvMovieVote.text = data.vote.toString()
     }
 
-    fun bind(movie: Movie, imagesConfig: ImagesConfig) {
-        bind(movie)
+    fun bind(tvShow: TvShow, imagesConfig: ImagesConfig) {
+        bind(tvShow)
         Glide.with(getContext())
-                .load(imagesConfig.buildPosterUrl(movie.posterPath, ImageSize.MEDIUM))
+                .load(imagesConfig.buildPosterUrl(tvShow.posterPath, ImageSize.MEDIUM))
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(ivMovieBackdrop)
     }
