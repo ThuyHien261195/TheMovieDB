@@ -1,4 +1,4 @@
-package com.taidang.themoviedb.presentation.adapter.pagerAdapter
+package com.taidang.themoviedb.presentation.adapter
 
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
