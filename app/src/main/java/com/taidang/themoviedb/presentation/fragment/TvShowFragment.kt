@@ -2,7 +2,7 @@ package com.taidang.themoviedb.presentation.fragment
 
 import android.os.Bundle
 import android.view.View
-import com.taidang.themoviedb.presentation.adapter.TvShowContentPagerAdapter
+import com.taidang.themoviedb.presentation.adapter.pagerAdapter.TvShowContentPagerAdapter
 import com.taidang.themoviedb.presentation.adapter.ZoomOutPageTransformer
 import kotlinx.android.synthetic.main.fragment_media.*
 import org.jetbrains.anko.support.v4.onPageChangeListener

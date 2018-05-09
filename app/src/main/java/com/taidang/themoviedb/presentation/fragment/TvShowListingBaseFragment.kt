@@ -11,7 +11,7 @@ import com.taidang.themoviedb.domain.model.TvShow
 import com.taidang.themoviedb.extension.gone
 import com.taidang.themoviedb.extension.visible
 import com.taidang.themoviedb.presentation.adapter.decoration.LinearItemDecoration
-import com.taidang.themoviedb.presentation.adapter.pagerAdapter.TvShowsListingAdapter
+import com.taidang.themoviedb.presentation.adapter.TvShowsListingAdapter
 import com.taidang.themoviedb.presentation.contract.base.IBaseView
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_movies_listing.*
