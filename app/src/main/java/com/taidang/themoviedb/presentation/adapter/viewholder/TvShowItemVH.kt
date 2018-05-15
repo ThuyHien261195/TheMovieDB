@@ -19,7 +19,7 @@ class TvShowItemVH(itemView: View) : BaseViewHolder<TvShow>(itemView) {
     fun bind(tvShow: TvShow, imagesConfig: ImagesConfig) {
         bind(tvShow)
         Glide.with(getContext())
-                .load(imagesConfig.buildPosterUrl(tvShow.posterPath, ImageSize.MEDIUM))
+                .load(imagesConfig.buildBackdropUrl(tvShow.backdropPath, ImageSize.MEDIUM))
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(ivMovieBackdrop)
     }
