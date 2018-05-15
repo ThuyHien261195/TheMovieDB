@@ -22,7 +22,6 @@ class TvShowEntity (
     val genres: JsonElement?, // too lazy to create entity and mapper
     val overview: String,
     val production_companies: JsonElement, // too lazy to create entity and mapper
-    val runtime: Int,
     val status: String,
     val tagline: String?,
     val imdb_id: String,
@@ -30,5 +29,5 @@ class TvShowEntity (
     val credits: CreditsResponse,
     val keywords: JsonElement, // too lazy to create entity and mapper
     val contentRatings: JsonElement,
-    val seasons: JsonElement
+    val seasons: List<TvSeasonEntity>
 )
