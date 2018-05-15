@@ -35,5 +35,4 @@ class TvShowsListingAdapter(private val tvShows: List<TvShow>,
     override fun onBindViewHolder(holder: TvShowItemVH, position: Int) {
         holder.bind(tvShows[position], imagesConfig)
     }
-
 }

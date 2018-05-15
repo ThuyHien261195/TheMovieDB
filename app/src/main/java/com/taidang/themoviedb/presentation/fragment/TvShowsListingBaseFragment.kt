@@ -22,7 +22,7 @@ import org.jetbrains.anko.support.v4.startActivity
 /**
  * Created by thuyhien on 5/8/18.
  */
-abstract class TvShowListingBaseFragment<PRESENTER> : DaggerFragment(), IBaseView<PRESENTER> {
+abstract class TvShowsListingBaseFragment<PRESENTER> : DaggerFragment(), IBaseView<PRESENTER> {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_movies_listing, container, false)
     }

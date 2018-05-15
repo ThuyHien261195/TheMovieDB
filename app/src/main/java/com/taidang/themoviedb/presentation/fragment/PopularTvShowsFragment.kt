@@ -1,7 +1,6 @@
 package com.taidang.themoviedb.presentation.fragment
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.View
 import com.taidang.themoviedb.domain.model.TvShow
 import com.taidang.themoviedb.presentation.contract.PopularTvShowsContract
@@ -11,7 +10,7 @@ import javax.inject.Inject
 /**
  * Created by thuyhien on 5/7/18.
  */
-class PopularTvShowsFragment() : TvShowListingBaseFragment<PopularTvShowsContract.Presenter>(),
+class PopularTvShowsFragment() : TvShowsListingBaseFragment<PopularTvShowsContract.Presenter>(),
     PopularTvShowsContract.View{
 
     @Inject
