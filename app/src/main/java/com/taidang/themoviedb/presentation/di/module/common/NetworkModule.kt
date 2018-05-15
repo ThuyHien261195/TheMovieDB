@@ -5,9 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.taidang.themoviedb.presentation.di.ApplicationScoped
 import com.taidang.themoviedb.presentation.di.DependencyName
-import com.taidang.themoviedb.repository.http.ConfigurationHttpClient
-import com.taidang.themoviedb.repository.http.MovieHttpClient
-import com.taidang.themoviedb.repository.http.TvShowHttpClient
+import com.taidang.themoviedb.repository.http.*
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
@@ -93,6 +91,20 @@ abstract class NetworkModule {
         @ApplicationScoped
         fun providesTvShowHttpClient(retrofit: Retrofit): TvShowHttpClient {
             return retrofit.create(TvShowHttpClient::class.java)
+        }
+
+        @Provides
+        @JvmStatic
+        @ApplicationScoped
+        fun providesTvSeasonHttpClient(retrofit: Retrofit): TvSeasonHttpClient {
+            return retrofit.create(TvSeasonHttpClient::class.java)
+        }
+
+        @Provides
+        @JvmStatic
+        @ApplicationScoped
+        fun providesTvEpisodeHttpClient(retrofit: Retrofit): TvEpisodeHttpClient {
+            return retrofit.create(TvEpisodeHttpClient::class.java)
         }
     }
 }

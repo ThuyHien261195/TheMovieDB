@@ -1,15 +1,9 @@
 package com.taidang.themoviedb.di.module
 
-import com.taidang.themoviedb.domain.ConfigurationRepository
-import com.taidang.themoviedb.domain.MovieRepository
-import com.taidang.themoviedb.domain.TvShowRepository
+import com.taidang.themoviedb.domain.*
 import com.taidang.themoviedb.presentation.di.ApplicationScoped
-import com.taidang.themoviedb.repository.ConfigurationRemoteDataStore
-import com.taidang.themoviedb.repository.MovieRemoteDataStore
-import com.taidang.themoviedb.repository.TvShowRemoteDataStore
-import com.taidang.themoviedb.repository.http.ConfigurationHttpClient
-import com.taidang.themoviedb.repository.http.MovieHttpClient
-import com.taidang.themoviedb.repository.http.TvShowHttpClient
+import com.taidang.themoviedb.repository.*
+import com.taidang.themoviedb.repository.http.*
 import com.taidang.themoviedb.repository.mapper.*
 import dagger.Module
 import dagger.Provides
@@ -41,6 +35,21 @@ abstract class RepositoryModule {
         @ApplicationScoped
         fun provideTvShowRepo(tvShowHttpClient: TvShowHttpClient, tvShowsInfoMapper: TvShowsInfoMapper, tvShowMapper: TvShowMapper) : TvShowRepository {
             return TvShowRemoteDataStore(tvShowHttpClient, tvShowsInfoMapper, tvShowMapper)
+        }
+
+        @Provides
+        @JvmStatic
+        @ApplicationScoped
+        fun provideTvSeasonRepo(tvSeasonHttpClient: TvSeasonHttpClient, tvSeasonMapper: TvSeasonMapper) : TvSeasonRepository{
+            return TvSeasonRemoteDataStore(tvSeasonHttpClient, tvSeasonMapper)
+        }
+
+        @Provides
+        @JvmStatic
+        @ApplicationScoped
+        fun provideTvEpisodeRepo(tvEpisodeHttpClient: TvEpisodeHttpClient,
+                                 tvEpisodeMapper: TvEpisodeMapper) : TvEpisodeRepository{
+            return TvEpisodeRemoteDataStore(tvEpisodeHttpClient, tvEpisodeMapper)
         }
     }
 }

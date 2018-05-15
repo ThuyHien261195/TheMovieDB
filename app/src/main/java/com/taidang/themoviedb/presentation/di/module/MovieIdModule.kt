@@ -13,8 +13,6 @@ abstract class MovieIdModule {
     companion object {
         @Provides
         @JvmStatic
-        fun provideMovieId(movieDetailsActivity: MovieDetailsActivity) : Int {
-            return movieDetailsActivity.getMovieId()
-        }
+        fun provideMovieId(movieDetailsActivity: MovieDetailsActivity) : Int = movieDetailsActivity.getMovieId()
     }
 }

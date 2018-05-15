@@ -24,11 +24,15 @@ abstract class MapperModule {
 
         @Provides
         @JvmStatic
-        fun prviodesCastMapper() = CastMapper()
+        fun providesCastMapper() = CastMapper()
 
         @Provides
         @JvmStatic
-        fun prviodesClipMapper() = ClipMapper()
+        fun providesClipMapper() = ClipMapper()
+
+        @Provides
+        @JvmStatic
+        fun providesCrewMapper() = CrewMapper()
 
         @Provides
         @JvmStatic
@@ -44,7 +48,8 @@ abstract class MapperModule {
 
         @Provides
         @JvmStatic
-        fun providesTvShowDetailsMapper(castMapper: CastMapper, clipMapper: ClipMapper) = TvShowDetailsMapper(castMapper, clipMapper)
+        fun providesTvShowDetailsMapper(castMapper: CastMapper, clipMapper: ClipMapper, tvSeasonMapper: TvSeasonMapper)
+                = TvShowDetailsMapper(castMapper, clipMapper, tvSeasonMapper)
 
         @Provides
         @JvmStatic
@@ -53,5 +58,23 @@ abstract class MapperModule {
         @Provides
         @JvmStatic
         fun providesTvShowInfoMapper(tvShowMapper: TvShowMapper) = TvShowsInfoMapper(tvShowMapper)
+
+        @Provides
+        @JvmStatic
+        fun providesTvEpisodeDetailsMapper(castMapper: CastMapper, crewMapper: CrewMapper, clipMapper: ClipMapper)
+                = TvEpisodeDetailsMapper(castMapper, crewMapper, clipMapper)
+
+        @Provides
+        @JvmStatic
+        fun providesTvEpisodeMapper(tvEpisodeDetailsMapper: TvEpisodeDetailsMapper) = TvEpisodeMapper(tvEpisodeDetailsMapper)
+
+        @Provides
+        @JvmStatic
+        fun providesTvSeasonDetailsMapper(castMapper: CastMapper, clipMapper: ClipMapper, tvEpisodeMapper: TvEpisodeMapper)
+                = TvSeasonDetailsMapper(castMapper, clipMapper, tvEpisodeMapper)
+
+        @Provides
+        @JvmStatic
+        fun providesTvSeasonMapper(tvSeasonDetailsMapper: TvSeasonDetailsMapper) = TvSeasonMapper(tvSeasonDetailsMapper)
     }
 }
