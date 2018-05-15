@@ -28,7 +28,7 @@ class TvShowRemoteDataStore(
     }
 
     override fun getTvShowDetails(id: Int): Single<TvShow> {
-        return tvShowHttpClient.getTvShowDetails(id, "en-US", "credits, videos, keywords, content_ratings")
+        return tvShowHttpClient.getTvShowDetails(id, "en-US", "credits,videos,keywords,content_ratings")
                 .map { tvShowMapper.transform(it) }
     }
 }
