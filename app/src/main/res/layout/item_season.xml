@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/section_item_layout_bgr"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/ivSeasonPic"
+        android:layout_width="@dimen/season_details_season_pic_width"
+        android:layout_height="@dimen/season_details_season_pic_height"
+        android:background="@color/section_poster_bgr"
+        android:padding="@dimen/season_poster_padding"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/tvSeasonName"
+        tools:text="Season 1"
+        android:layout_width="@dimen/movie_details_cast_pic_width"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="@color/text_brightest_gray"
+        android:textSize="@dimen/media_title_item_text_size" />
+
+    <TextView
+        android:id="@+id/tvEpisodeCount"
+        tools:text="EC: 10"
+        android:layout_width="@dimen/movie_details_cast_pic_width"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="@color/text_bright_gray"
+        android:textSize="@dimen/media_sub_info_item_text_size" />
+</LinearLayout>

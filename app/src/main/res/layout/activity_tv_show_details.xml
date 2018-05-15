@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/media_detail_activity_bgr">
+
+    <ScrollView
+        android:id="@+id/scTvShowDetailsListing"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/image_detail_padding_bottom">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:alpha="0.1"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_item_placeholder"
+                app:layout_constraintBottom_toBottomOf="@+id/ivBackdrop"
+                app:layout_constraintLeft_toLeftOf="@+id/ivBackdrop"
+                app:layout_constraintRight_toRightOf="@+id/ivBackdrop"
+                app:layout_constraintTop_toTopOf="@+id/ivBackdrop" />
+
+            <ImageView
+                android:id="@+id/ivBackdrop"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="h,1:0.55"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvContentRating"
+                style="@style/ContentRating"
+                android:layout_marginBottom="@dimen/content_rating_padding"
+                android:layout_marginStart="@dimen/content_rating_padding"
+                app:layout_constraintBottom_toBottomOf="@id/ivBackdrop"
+                app:layout_constraintLeft_toLeftOf="@id/ivBackdrop"
+                tools:text="PG-13" />
+
+            <include
+                android:id="@+id/vOverviewInfo"
+                layout="@layout/include_movie_details_overview_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/ivBackdrop" />
+
+            <include
+                android:id="@+id/vDescriptionContainer"
+                layout="@layout/include_movie_details_description_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/vOverviewInfo" />
+
+            <include
+                android:id="@+id/vCastSection"
+                layout="@layout/include_movie_details_cast_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/vDescriptionContainer" />
+
+            <include
+                android:id="@+id/vSeasonSection"
+                layout="@layout/include_tv_show_details_season_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/vCastSection" />
+
+            <include
+                layout="@layout/include_movie_details_product_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/vSeasonSection" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/vLoading"
+        style="@style/LoadingView"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+</FrameLayout>
