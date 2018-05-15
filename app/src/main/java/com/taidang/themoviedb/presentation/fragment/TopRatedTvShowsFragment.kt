@@ -34,12 +34,10 @@ class TopRatedTvShowsFragment() : TvShowListingBaseFragment<TopRatedTvShowsContr
     }
 
     override fun displayTvShows(tvShows: List<TvShow>) {
-        super.displayTvShows(tvShows, mAppConfigManager.getImagesConfig()) {
-            clickedItem -> mPresenter.chooseTvShow(clickedItem)
-        }
+        super.displayTvShows(tvShows, mAppConfigManager.getImagesConfig(), {clickedItem -> mPresenter.chooseTvShow(clickedItem)})
     }
 
     override fun gotoDetailTvShow(tvShow: TvShow) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        super.gotoTvShowDetails(tvShow)
     }
 }

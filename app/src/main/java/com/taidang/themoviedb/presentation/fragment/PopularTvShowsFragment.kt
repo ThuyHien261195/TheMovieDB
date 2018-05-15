@@ -39,6 +39,6 @@ class PopularTvShowsFragment() : TvShowListingBaseFragment<PopularTvShowsContrac
     }
 
     override fun gotoDetailTvShow(tvShow: TvShow) {
-
+        super.gotoTvShowDetails(tvShow)
     }
 }
