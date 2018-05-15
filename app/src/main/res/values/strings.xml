@@ -11,6 +11,9 @@
     <string name="label_prod_country">Production Country</string>
     <string name="label_prod_company">Production Company</string>
     <string name="label_keywords">Keyword</string>
+    <string name="label_season">Season</string>
+    <string name="label_episode">Episode</string>
+    <string name="label_episode_count">EC: </string>
 
     <string name="tab_name_movie">Movie</string>
     <string name="tab_name_tv_show">Tv Show</string>

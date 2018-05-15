@@ -15,5 +15,8 @@
     <color name="toolbar_title_color">@color/colorAccent</color>
 
     <color name="app_bgr">@color/colorPrimaryDark</color>
-    <color name="movie_details_section_bgr">#252526</color>
+    <color name="media_details_section_bgr">#252526</color>
+    <color name="media_detail_activity_bgr">#19191A</color>
+    <color name="section_item_layout_bgr">#00000000</color>
+    <color name="section_poster_bgr">#3A3A3A</color>
 </resources>
