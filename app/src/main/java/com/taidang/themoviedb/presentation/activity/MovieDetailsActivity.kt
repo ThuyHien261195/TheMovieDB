@@ -11,12 +11,11 @@ import com.taidang.themoviedb.domain.model.Cast
 import com.taidang.themoviedb.domain.model.ImageSize
 import com.taidang.themoviedb.domain.model.ImagesConfig
 import com.taidang.themoviedb.domain.model.Movie
+import com.taidang.themoviedb.extension.configHorizontalListView
 import com.taidang.themoviedb.extension.gone
-import com.taidang.themoviedb.extension.tmdbApp
 import com.taidang.themoviedb.extension.visible
 import com.taidang.themoviedb.presentation.adapter.CastAdapter
 import com.taidang.themoviedb.presentation.contract.MovieDetailsContract
-import com.taidang.themoviedb.presentation.di.module.MovieDetailsModule
 import kotlinx.android.synthetic.main.activity_movie_details.*
 import kotlinx.android.synthetic.main.include_movie_details_cast_section.*
 import kotlinx.android.synthetic.main.include_movie_details_description_section.*
@@ -53,7 +52,7 @@ class MovieDetailsActivity : BaseActivity(), MovieDetailsContract.View {
     override fun showDetails(movie: Movie) {
         renderOverview(movie)
         renderProductInfo(movie)
-        renderCasts(movie.details?.let { it.casts } ?: emptyList())
+        renderCasts(movie.details?.casts ?: emptyList())
         vMovieDetailsListing.visible()
     }
 
@@ -79,7 +78,7 @@ class MovieDetailsActivity : BaseActivity(), MovieDetailsContract.View {
         Glide.with(this)
                 .load(imagesConfig.buildBackdropUrl(movie.backdropPath, ImageSize.MEDIUM))
                 .transition(DrawableTransitionOptions.withCrossFade())
-                .into(vBackdrop)
+                .into(ivBackdrop)
         Glide.with(this)
                 .load(imagesConfig.buildPosterUrl(movie.posterPath, ImageSize.SMALL))
                 .transition(DrawableTransitionOptions.withCrossFade())
@@ -92,6 +91,7 @@ class MovieDetailsActivity : BaseActivity(), MovieDetailsContract.View {
             vPrimaryInfo.text = "${getDurationStr()}  |  $releaseDate  |  ${genres.joinToString()}"
             vDescription.text = description
         }
+
         movie.details?.contentRating?.let {
             vContentRating.visible()
             vContentRating.text = it
@@ -102,15 +102,9 @@ class MovieDetailsActivity : BaseActivity(), MovieDetailsContract.View {
         val filteredList = casts.filter {
             it.profile_path != null && it.profile_path.isNotEmpty()
         }
-        vCastListing.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        vCastListing.setHasFixedSize(true)
-        vCastListing.adapter = CastAdapter(filteredList, imagesConfig)
 
-        ContextCompat.getDrawable(this, R.drawable.cast_listing_divider)?.let {
-            val dividerItemDecoration = DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL)
-            dividerItemDecoration.setDrawable(it)
-            vCastListing.addItemDecoration(dividerItemDecoration)
-        }
+        vCastListing.configHorizontalListView(this)
+        vCastListing.adapter = CastAdapter(filteredList, imagesConfig)
     }
 
     private fun renderProductInfo(movie: Movie) {
