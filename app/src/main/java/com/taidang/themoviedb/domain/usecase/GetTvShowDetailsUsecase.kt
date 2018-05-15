@@ -8,10 +8,10 @@ import io.reactivex.Single
 /**
  * Created by thuyhien on 5/4/18.
  */
-class GetTvShowDetailsUsecase(schedulerFactory: SchedulerFactory, private val seriesRepository: TvShowRepository)
+class GetTvShowDetailsUsecase(schedulerFactory: SchedulerFactory, private val tvShowRepository: TvShowRepository)
     : BaseUsecase(schedulerFactory) {
     fun getSeriesDetails(id: Int) : Single<TvShow> {
-        return seriesRepository.getTvShowDetails(id)
+        return tvShowRepository.getTvShowDetails(id)
                 .subscribeOn(schedulerFactory.workerScheduler())
                 .observeOn(schedulerFactory.callbackScheduler())
     }
