@@ -42,15 +42,5 @@ class MediaMapper {
                         .map { it.get("name").asString }
             }
         }
-
-        public fun parseKeywords(element: JsonElement): List<String> {
-            return if (!element.isJsonObject) emptyList()
-            else {
-                element.asJsonObject.get("keywords").asJsonArray
-                        .map { it.asJsonObject }
-                        .filter { !it.get("name").isJsonNull }
-                        .map { it.get("name").asString }
-            }
-        }
     }
 }

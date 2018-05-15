@@ -1,17 +1,18 @@
 package com.taidang.themoviedb.repository.mapper
 
 import com.google.gson.JsonElement
-import com.taidang.themoviedb.domain.model.SeasonOfTvShow
+import com.taidang.themoviedb.domain.model.TvSeason
 import com.taidang.themoviedb.domain.model.TvShowDetails
 import com.taidang.themoviedb.repository.mapper.MediaMapper.Companion.parseCompanies
 import com.taidang.themoviedb.repository.mapper.MediaMapper.Companion.parseGenres
-import com.taidang.themoviedb.repository.mapper.MediaMapper.Companion.parseKeywords
 import com.taidang.themoviedb.repository.response.TvShowEntity
 
 /**
  * Created by thuyhien on 5/7/18.
  */
-class TvShowDetailsMapper(private val castMapper: CastMapper, private val clipMapper: ClipMapper)
+class TvShowDetailsMapper(private val castMapper: CastMapper,
+                          private val clipMapper: ClipMapper,
+                          private val tvSeasonMapper: TvSeasonMapper)
     : IMapper<TvShowEntity, TvShowDetails> {
     override fun transform(entity: TvShowEntity): TvShowDetails {
         val genres = parseGenres(entity.genres!!)
@@ -19,10 +20,9 @@ class TvShowDetailsMapper(private val castMapper: CastMapper, private val clipMa
         val clips = clipMapper.transform(entity.videos.results)
         val companies = parseCompanies(entity.production_companies)
         val keywords = parseKeywords(entity.keywords)
-        val contenRatings = parseContentRating(entity.contentRatings)
-        val seasons = parseSeasons(entity.seasons)
-        return TvShowDetails(entity.runtime,
-                genres,
+        val contentRatings = parseContentRating(entity.contentRatings)
+        val seasons = tvSeasonMapper.transform(entity.seasons)
+        return TvShowDetails(genres,
                 entity.overview,
                 casts,
                 clips,
@@ -31,7 +31,7 @@ class TvShowDetailsMapper(private val castMapper: CastMapper, private val clipMa
                 entity.homepage ?: "",
                 entity.tagline ?: "",
                 keywords,
-                contenRatings,
+                contentRatings,
                 seasons)
     }
 
@@ -46,18 +46,13 @@ class TvShowDetailsMapper(private val castMapper: CastMapper, private val clipMa
         }
     }
 
-    private fun parseSeasons(element: JsonElement): List<SeasonOfTvShow> {
-        return if (!element.isJsonObject) ArrayList<SeasonOfTvShow>()
+    private fun parseKeywords(element: JsonElement): List<String> {
+        return if (!element.isJsonObject) emptyList()
         else {
-            element.asJsonArray
-                    .filter { it.isJsonObject }
+            element.asJsonObject.get("results").asJsonArray
                     .map { it.asJsonObject }
-                    .filter { !it.get("poster_path").isJsonNull }
-                    .map {
-                        SeasonOfTvShow(it.get("id").asInt, it.get("air_date").asString,
-                                it.get("episode_count").asInt, it.get("poster_path").asString,
-                                it.get("season_number").asInt)
-                    }
+                    .filter { !it.get("name").isJsonNull }
+                    .map { it.get("name").asString }
         }
     }
 }
