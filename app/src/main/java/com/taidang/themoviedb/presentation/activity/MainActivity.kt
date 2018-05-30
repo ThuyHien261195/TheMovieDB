@@ -2,8 +2,13 @@ package com.taidang.themoviedb.presentation.activity
 
 import android.os.Bundle
 import android.support.v4.app.FragmentTransaction
+import android.support.v4.content.ContextCompat
+import android.support.v4.graphics.drawable.DrawableCompat
+import android.widget.Button
 import com.taidang.themoviedb.R
 import com.taidang.themoviedb.extension.enum.FragmentType
+import com.taidang.themoviedb.extension.setSelectedBackground
+import com.taidang.themoviedb.extension.setUnselectedBackground
 import com.taidang.themoviedb.presentation.fragment.MovieFragment
 import com.taidang.themoviedb.presentation.fragment.TvShowFragment
 import com.taidang.themoviedb.presentation.listener.PageSelectedListener
@@ -17,28 +22,41 @@ class MainActivity : DaggerAppCompatActivity(), PageSelectedListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btnMovie.setOnClickListener{
+        miMovie.setOnClickListener{
             showFragment(FragmentType.MOVIE)
         }
 
-        btnSeries.setOnClickListener{
+        miSeries.setOnClickListener{
             showFragment(FragmentType.TVSHOWS)
         }
 
         showFragment(FragmentType.MOVIE)
     }
 
+    override fun onPageSelected(title: String) {
+        vToolbar.title = title
+    }
+
     private fun showFragment(fragmentType: FragmentType) {
+        setBottomButtonBackground(fragmentType)
         val fragmentTransition : FragmentTransaction = supportFragmentManager.beginTransaction()
         when(fragmentType) {
             FragmentType.MOVIE -> fragmentTransition.replace(R.id.frameLayoutMain, MovieFragment())
             FragmentType.TVSHOWS -> fragmentTransition.replace(R.id.frameLayoutMain, TvShowFragment())
-            else -> fragmentTransition.replace(R.id.frameLayoutMain, MovieFragment())
         }
         fragmentTransition.commit()
     }
 
-    override fun onPageSelected(title: String) {
-        vToolbar.title = title
+    private fun setBottomButtonBackground(fragmentType: FragmentType) {
+        when(fragmentType) {
+            FragmentType.MOVIE -> {
+                miMovie.setActive()
+                miSeries.setInActive()
+            }
+            FragmentType.TVSHOWS -> {
+                miSeries.setActive()
+                miMovie.setInActive()
+            }
+        }
     }
 }

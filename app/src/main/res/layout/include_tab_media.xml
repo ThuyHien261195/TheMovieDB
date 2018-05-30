@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="bottom"
@@ -7,16 +8,30 @@
     android:background="@android:color/white"
     android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btnMovie"
-        style="@style/MovieTabItem"
-        android:drawableTop="@drawable/ic_movie"
-        android:text="@string/tab_name_movie" />
+    <com.taidang.themoviedb.presentation.customizedView.BottomMenuItem
+        style="@style/BottomMenuItem"
+        app:active="true"
+        app:imageSrc="@drawable/ic_movie"
+        app:titleMenuItem="@string/tab_name_movie"
+        android:id="@+id/miMovie"/>
 
-    <Button
-        android:id="@+id/btnSeries"
-        style="@style/MovieTabItem"
-        android:drawableTop="@drawable/ic_tv_show"
-        android:text="@string/tab_name_tv_show" />
+    <com.taidang.themoviedb.presentation.customizedView.BottomMenuItem
+        style="@style/BottomMenuItem"
+        app:active="false"
+        app:imageSrc="@drawable/ic_tv_show"
+        app:titleMenuItem="@string/tab_name_tv_show"
+        android:id="@+id/miSeries"/>
 
 </LinearLayout>
+
+<!--<Button-->
+<!--android:id="@+id/btnMovie"-->
+<!--style="@style/BottomTabItem"-->
+<!--android:drawableTop="@drawable/ic_movie"-->
+<!--android:text="@string/tab_name_movie" />-->
+
+<!--<Button-->
+<!--android:id="@+id/btnSeries"-->
+<!--style="@style/BottomTabItem"-->
+<!--android:drawableTop="@drawable/ic_tv_show"-->
+<!--android:text="@string/tab_name_tv_show" />-->
