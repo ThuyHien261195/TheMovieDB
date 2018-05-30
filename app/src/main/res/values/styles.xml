@@ -76,7 +76,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="MovieTabItem">
+    <style name="BottomTabItem">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAllCaps">false</item>
@@ -93,4 +93,24 @@
         <item name="android:padding">1dp</item>
         <item name="android:scaleType">centerCrop</item>
     </style>
+
+    <!-- Example customize menu item -->
+    <style name="BottomMenuItemTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="BottomMenuItem">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="activeColor">@color/text_dark_blue</item>
+        <item name="inactiveColor">@android:color/black</item>
+    </style>
+    <!-- End example -->
 </resources>
